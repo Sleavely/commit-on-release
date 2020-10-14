@@ -6,6 +6,7 @@ const {
   NEWRELEASES_SECRET = '',
 } = process.env
 
+const crypto = require('crypto')
 const emptyGitHubCommit = require('make-empty-github-commit')
 
 module.exports = (api) => {
