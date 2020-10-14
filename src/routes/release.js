@@ -19,7 +19,7 @@ module.exports = (api) => {
     if (
       provider !== 'dockerhub' ||
       project !== 'node' ||
-      !['8', '10', '12'].includes(version)
+      !['10', '12'].includes(version)
     ) return res.status(400).send({ committed: false })
 
     const { sha } = await emptyGitHubCommit({
