@@ -16,6 +16,7 @@ module.exports = (api) => {
       version,
     } = req.body
 
+    // TODO: should use signature verification described here: https://newreleases.io/webhooks
     if (
       provider !== 'dockerhub' ||
       project !== 'node' ||
@@ -23,8 +24,8 @@ module.exports = (api) => {
     ) return res.status(400).send({ committed: false })
 
     const { sha } = await emptyGitHubCommit({
-      owner: 'username',
-      repo: 'repo name',
+      owner: GITHUB_USERNAME,
+      repo: GITHUB_REPO,
       token: GITHUB_PERSONAL_TOKEN,
       message: 'my message',
       branch: 'develop' // "master" is default
