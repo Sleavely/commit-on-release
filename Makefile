@@ -22,8 +22,7 @@ deploy = aws cloudformation deploy --template-file dist/cloudformation.dist.yml 
     --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
     --s3-bucket $(ARTIFACTS_BUCKET) \
     # --no-fail-on-empty-changeset
-echoenv:
-	echo $(ENVIRONMENT)
+
 deploy:
 	@echo "Resetting dist directory"
 	@rm -rf dist
