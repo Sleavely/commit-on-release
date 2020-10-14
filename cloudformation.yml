@@ -12,6 +12,8 @@ Parameters:
     Type: String
   GITHUBREPO:
     Type: String
+  NEWRELEASESSECRET:
+    Type: String
 
 
 Mappings:
@@ -37,6 +39,7 @@ Globals:
         GITHUB_USERNAME: !Sub ${GITHUBUSERNAME}
         GITHUB_PERSONAL_TOKEN: !Sub ${GITHUBPERSONALTOKEN}
         GITHUB_REPO: !Sub ${GITHUBREPO}
+        NEWRELEASES_SECRET: !Sub ${NEWRELEASESSECRET}
 
 Resources:
   # REST API
