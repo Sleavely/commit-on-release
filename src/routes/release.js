@@ -10,9 +10,17 @@ const emptyGitHubCommit = require('make-empty-github-commit')
 
 module.exports = (api) => {
   api.post('/release', async (req, res) => {
+    const {
+      provider,
+      project,
+      version,
+    } = req.body
 
-    console.log(req.body)
-    return { committed: false }
+    if (
+      provider !== 'dockerhub' ||
+      project !== 'node' ||
+      !['8', '10', '12'].includes(version)
+    ) return res.status(400).send({ committed: false })
 
     const { sha } = await emptyGitHubCommit({
       owner: 'username',
