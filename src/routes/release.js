@@ -18,8 +18,8 @@ module.exports = (api) => {
 
     // Basic request validation.
     if (
-      !req.rawHeaders['X-Newreleases-Timestamp'] ||
-      !req.rawHeaders['X-Newreleases-Signature'] ||
+      !req.headers['x-newreleases-timestamp'] ||
+      !req.headers['x-newreleases-signature'] ||
       provider !== 'dockerhub' ||
       project !== 'node' ||
       !['10', '12'].includes(version)
@@ -28,12 +28,12 @@ module.exports = (api) => {
     // Verify the message was sent by newreleases.io by creating
     // a local signature and comparing it with the one in the headers.
     // https://newreleases.io/webhooks
-    const messageToSign = `${req.rawHeaders['X-Newreleases-Timestamp']}.${JSON.stringify(req.body)}`
+    const messageToSign = `${req.headers['x-newreleases-timestamp']}.${JSON.stringify(req.body)}`
     const expectedSignature = crypto
       .createHmac('sha256', NEWRELEASES_SECRET)
       .update(messageToSign)
       .digest('hex')
-    if (expectedSignature !== req.rawHeaders['X-Newreleases-Signature']) {
+    if (expectedSignature !== req.headers['x-newreleases-signature']) {
       return res.status(403).send({ committed: false })
     }
 
