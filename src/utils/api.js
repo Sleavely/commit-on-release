@@ -1,4 +1,4 @@
-
+require('dotenv').config()
 const {
   API_BASE_PATH = '',
   LOG_LEVEL = 'warn',

@@ -6,6 +6,15 @@ Parameters:
     Type: String
   ENVIRONMENT:
     Type: String
+  GITHUBUSERNAME:
+    Type: String
+  GITHUBPERSONALTOKEN:
+    Type: String
+  GITHUBREPO:
+    Type: String
+  GITHUBBRANCH:
+    Type: String
+
 
 Mappings:
   dev:
@@ -27,6 +36,10 @@ Globals:
         ENVIRONMENT: !Sub ${ENVIRONMENT}
         LOG_LEVEL: info
         PROJECT: !Sub ${PROJECT}
+        GITHUB_USERNAME: !Sub ${GITHUBUSERNAME}
+        GITHUB_PERSONAL_TOKEN: !Sub ${GITHUBPERSONALTOKEN}
+        GITHUB_REPO: !Sub ${GITHUBREPO}
+        GITHUB_BRANCH: !Sub ${GITHUBBRANCH}
 
 Resources:
   # REST API
