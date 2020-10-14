@@ -1,0 +1,19 @@
+{
+  "name": "commit-on-release",
+  "version": "1.0.0",
+  "description": "Creates empty commits in arbitrary Github repos when newreleases.io sends a webhook.",
+  "private": true,
+  "author": "Joakim Hedlund <contact@joakimhedlund.com>",
+  "license": "Unlicensed",
+  "repository": "github:Sleavely/commit-on-release",
+  "homepage": "https://github.com/Sleavely/commit-on-release",
+  "keywords": [],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "lambda-api": "^0.10.6",
+    "make-empty-github-commit": "^1.2.1"
+  }
+}
