@@ -13,8 +13,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@octokit/rest": "^18.0.12",
     "dotenv": "^8.2.0",
-    "lambda-api": "^0.10.6",
-    "make-empty-github-commit": "^1.2.1"
+    "lambda-api": "^0.10.6"
   }
 }
