@@ -7,7 +7,7 @@ const {
 } = process.env
 
 const crypto = require('crypto')
-const emptyGitHubCommit = require('make-empty-github-commit')
+const { bumpBranch } = require('../utils/github.js')
 
 module.exports = (api) => {
   api.post('/release', async (req, res) => {
@@ -38,12 +38,11 @@ module.exports = (api) => {
       return res.status(403).send({ committed: false })
     }
 
-    const { sha } = await emptyGitHubCommit({
+    const { sha } = await bumpBranch({
       owner: GITHUB_USERNAME,
       repo: GITHUB_REPO,
-      token: GITHUB_PERSONAL_TOKEN,
+      branch: `v${version}`,
       message: `${project}:${version} was pushed to Docker Hub.`,
-      branch: `v${version}`
     })
     req.log.info('Published git commit', { sha })
 
