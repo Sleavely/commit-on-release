@@ -21,6 +21,7 @@ deploy = aws cloudformation deploy --template-file dist/cloudformation.dist.yml 
     --tags $(TAGS) \
     --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
     --s3-bucket $(ARTIFACTS_BUCKET) \
+    --s3-prefix $(STACK_NAME) \
     # --no-fail-on-empty-changeset
 
 deploy:
