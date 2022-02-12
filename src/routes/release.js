@@ -23,7 +23,7 @@ module.exports = (api) => {
       !req.headers['x-newreleases-signature'] ||
       provider !== 'dockerhub' ||
       project !== 'node' ||
-      !['10', '12', '14'].includes(version)
+      !['10', '12', '14', '16'].includes(version)
     ) return res.status(400).send({ committed: false })
 
     // Verify the message was sent by newreleases.io by creating
